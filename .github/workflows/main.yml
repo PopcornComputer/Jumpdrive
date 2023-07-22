@@ -7,6 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Install or Restore Required Dependencies
+      uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: uboot-mkimage
+        version: 1.0
    #- uses: webfactory/ssh-agent@v0.8.0
    #  with:
    #    ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -19,8 +24,7 @@ jobs:
    #      output/
    #    key: dl-and-output-dir
     - name: Compile JumpDrive SD Card Image
-      run: |
-        make -j8 sourceparts-pocketpc.img
+      run: make -j8 sourceparts-pocketpc.img
    #- name: Save Download Cache
    #   uses: actions/cache/save@v3
    #   if: always()
