@@ -10,7 +10,7 @@ jobs:
     - name: Install or Restore Required Dependencies
       uses: awalsh128/cache-apt-pkgs-action@latest
       with:
-        packages: uboot-mkimage
+        packages: u-boot-tools
         version: 1.0
    #- uses: webfactory/ssh-agent@v0.8.0
    #  with:
