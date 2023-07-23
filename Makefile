@@ -55,7 +55,7 @@ sourceparts-pocketpc.img: fat-sourceparts-pocketpc.img u-boot-sunxi-with-spl-poc
 	dd if=u-boot-sunxi-with-spl-pocketpc.bin of=$@ bs=8k seek=1
 	dd if=fat-$@ of=$@ seek=1024 bs=1k
 
-fat-sourceparts-pocketpc.img: initramfs-sourceparts-pocketpc.gz kernel-pocketpc.gz sourceparts-pocketpc.scr dtbs/pocketpc/sun50i-a64-pocket-pc.dtb
+fat-sourceparts-pocketpc.img: initramfs-sourceparts-pocketpc.gz kernel-pocketpc.gz sourceparts-pocketpc.scr # dtbs/pocketpc/sun50i-a64-pocket-pc.dtb
 	@echo "MKFS  $@"
 	@rm -f $@
 	@truncate --size 40M $@
