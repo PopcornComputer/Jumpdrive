@@ -20,7 +20,7 @@ jobs:
     - name: Compile JumpDrive SD Card Image
       run: make -j8 sourceparts-pocketpc.img
     - name: Prepare Build Artifacts & Perform Checksum
-      working-directory: output/images
+      working-directory: ./
       run: sha256sum sourceparts-pocketpc.img > sourceparts-pocketpc.img.sha256sum
     - name: Save Download Cache
       uses: actions/cache/save@v3
