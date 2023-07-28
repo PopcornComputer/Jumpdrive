@@ -21,7 +21,10 @@ jobs:
       run: make -j8 sourceparts-pocketpc.img
     - name: Prepare Build Artifacts & Perform Checksum
       working-directory: ./
-      run: sha256sum sourceparts-pocketpc.img > sourceparts-pocketpc.img.sha256sum
+      run: |
+        sha256sum sourceparts-pocketpc.img > sourceparts-pocketpc.img.sha256sum
+        echo `sha256sum sourceparts-pocketpc.img`
+        cat sourceparts-pocketpc.img.sha256sum
     - name: Save Download Cache
       uses: actions/cache/save@v3
       if: always()
