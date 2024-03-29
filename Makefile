@@ -117,7 +117,7 @@ initramfs/bin/busybox: src/busybox src/busybox_config
 	@echo "MAKE  $@"
 	@mkdir -p build/busybox
 	@cp src/busybox_config build/busybox/.config
-	@$(MAKE) -C src/busybox O=../../build/busybox $(CROSS_FLAGS)
+	@(set -x; $(MAKE) $(CROSS_FLAGS) -C src/busybox O=../../build/busybox)
 	@cp build/busybox/busybox initramfs/bin/busybox
 	
 splash/%.ppm.gz: splash/%.ppm
@@ -211,7 +211,7 @@ dtbs/sdm845/sdm845-oneplus-fajita.dtb: kernel-sdm845.gz
 build/atf/sun50i_a64/bl31.bin: src/arm-trusted-firmware
 	@echo "MAKE  $@"
 	@mkdir -p build/atf/sun50i_a64
-	@cd src/arm-trusted-firmware; make $(CROSS_FLAGS_BOOT) PLAT=sun50i_a64 bl31
+	@(set -x; cd src/arm-trusted-firmware; make $(CROSS_FLAGS_BOOT) PLAT=sun50i_a64 bl31)
 	@cp src/arm-trusted-firmware/build/sun50i_a64/release/bl31.bin "$@"
 
 u-boot-sunxi-with-spl.bin: build/atf/sun50i_a64/bl31.bin src/u-boot
